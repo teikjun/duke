@@ -1,4 +1,8 @@
+/**
+ * Parses user input.
+ */
 public class Parser {
+
     public Command parseCommand(String userCommandText) {
         String[] words = userCommandText.split(" ");
         String commandWord = words[0];
@@ -35,6 +39,8 @@ public class Parser {
                 } else {
                     return new EventCommand(eventParts[0], eventParts[1]);
                 }
+            case ExitCommand.COMMAND_WORD:
+                return new ExitCommand();
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
             }

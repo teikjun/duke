@@ -16,6 +16,6 @@ public class DeadlineCommand extends Command {
     public CommandResult execute() {
         Task newDeadline = Deadline.createDeadline(firstArgumentText, false, secondArgumentText);
         taskList.addToList(newDeadline);
-        return new CommandResult(getAddSuccessMessage(newDeadline), taskList);
+        return new CommandResult(getAddSuccessMessage(newDeadline));
     }
 }

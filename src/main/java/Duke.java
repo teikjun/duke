@@ -37,19 +37,12 @@ public class Duke {
             String userCommandText = ui.getUserCommand();
             command = (new Parser()).parseCommand(userCommandText);
             CommandResult result = executeCommand(command);
-            this.record(result);
             ui.showResultToUser(result);
-        } while (ExitCommand.isExitCommand(command));
-    }
-
-    public void record(CommandResult result) {
-        if (result.getTaskList() != null) {
-            taskList = result.getTaskList();
-        }
+        } while (!ExitCommand.isExitCommand(command));
     }
 
     public CommandResult executeCommand(Command command) {
-        command.setData(taskList.clone());
+        command.setData(taskList);
         return command.execute();
     }
 

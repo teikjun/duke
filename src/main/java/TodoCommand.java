@@ -14,7 +14,7 @@ public class TodoCommand extends Command {
     public CommandResult execute() {
         Task newTodo = Todo.createTodo(argumentText, false);
         taskList.addToList(newTodo);
-        return new CommandResult(getAddSuccessMessage(newTodo), taskList);
+        return new CommandResult(getAddSuccessMessage(newTodo));
     }
 
 }

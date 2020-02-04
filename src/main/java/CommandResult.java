@@ -6,11 +6,6 @@ public class CommandResult {
         this.feedbackToUser = feedbackToUser;
     }
 
-    CommandResult(String feedbackToUser, TaskList taskList) {
-        this.feedbackToUser = feedbackToUser;
-        this.taskList = taskList;
-    }
-
     public String getFeedbackToUser() {
         return feedbackToUser;
     }

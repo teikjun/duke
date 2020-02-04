@@ -13,6 +13,6 @@ public class EventCommand extends Command {
     public CommandResult execute() {
         Task newEvent = Event.createEvent(firstArgumentText, false, secondArgumentText);
         taskList.addToList(newEvent);
-        return new CommandResult(getAddSuccessMessage(newEvent), taskList);
+        return new CommandResult(getAddSuccessMessage(newEvent));
     }
 }

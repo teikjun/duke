@@ -1,8 +1,11 @@
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Stores a list of tasks and methods to make changes to the list
+ */
 public class TaskList {
-    List<Task> tasks;
+    private final List<Task> tasks;
 
     TaskList() {
         tasks = new ArrayList<>();
@@ -13,16 +16,6 @@ public class TaskList {
     }
 
     /**
-     * Create a clone of the TaskList.
-     * A new List object is created, but the cloned list refers to the same Tasks as the original.
-     * The implication is that Tasks should be immutable.
-     * @return TaskList that is a clone of the original
-     */
-    public TaskList clone() {
-        List<Task> copyList = new ArrayList<>(tasks);
-        return new TaskList(copyList);
-    }
-    /**
      * Returns the size of the tasks list
      * @return the number of tasks
      */
@@ -32,7 +25,7 @@ public class TaskList {
 
     /**
      * Adds a task to the tasks list
-     * @param newTask: the task to be added
+     * @param newTask the task to be added
      */
     public void addToList(Task newTask) {
         tasks.add(newTask);
@@ -40,7 +33,7 @@ public class TaskList {
 
     /**
      * Deletes a task
-     * @param taskNumber: the target task number to delete
+     * @param taskNumber the target task number to delete
      * @return the task that is deleted
      */
     public Task delete(int taskNumber) {
@@ -51,8 +44,8 @@ public class TaskList {
 
     /**
      * Mark a task as done by substituting the current task with a completed task in the list
-     * @param taskNumber: the target task number to delete
-     * @returns the Task that is marked as done
+     * @param taskNumber the target task number to delete
+     * @return the Task that is marked as done
      */
     public Task markAsDone(int taskNumber) {
         // the index of a task in the list is one less than the taskNumber

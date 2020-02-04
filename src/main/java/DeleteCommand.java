@@ -12,7 +12,7 @@ public class DeleteCommand extends Command {
     public CommandResult execute() {
         int index = taskNumber - 1;
         Task removedTask = taskList.delete(index);
-        return new CommandResult(getDeleteSuccessMessage(removedTask), taskList);
+        return new CommandResult(getDeleteSuccessMessage(removedTask));
     }
 
     public String getDeleteSuccessMessage(Task removedTask) {
