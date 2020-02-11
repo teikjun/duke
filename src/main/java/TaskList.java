@@ -42,6 +42,14 @@ public class TaskList {
         return removedTask;
     }
 
+    public Task edit(int taskNumber, String newName) {
+        int index = taskNumber - 1;
+        Task targetTask = tasks.get(index);
+        Task editedTask = targetTask.setName(newName);
+        tasks.set(index, editedTask);
+        return editedTask;
+    }
+
     /**
      * Mark a task as done by substituting the current task with a completed task in the list
      * @param taskNumber the target task number to delete
@@ -71,4 +79,7 @@ public class TaskList {
         return result;
     }
 
+    public List<Task> getList() {
+        return tasks;
+    }
 }

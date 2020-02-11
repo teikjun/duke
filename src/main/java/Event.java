@@ -10,8 +10,16 @@ public class Event extends Task {
         return new Event(name, isDone, date);
     }
 
-    public String getDate() {
-        return this.date;
+    public static Event decode(String text) {
+        String[] parts = text.split(",");
+        boolean decodedIsDone = parts[1].equals("1");
+        return createEvent(parts[2], decodedIsDone, parts[3]);
+    }
+
+    @Override
+    public String encodeTask() {
+        int encodedIsDone = this.getIsDone() ? 1 : 0;
+        return "E," + encodedIsDone + "," + name + "," + date;
     }
 
     @Override
@@ -20,9 +28,18 @@ public class Event extends Task {
     }
 
     @Override
+    public Task setName(String newName) {
+        return createEvent(newName, isDone, date);
+    }
+
+    @Override
     public String toString() {
         String taskString = super.toString();
         String result = "[E]" + taskString + " (at: " + date + ")";
         return result;
+    }
+
+    public String getDate() {
+        return this.date;
     }
 }

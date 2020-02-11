@@ -1,14 +1,10 @@
-public class Task {
+public abstract class Task {
     String name;
     boolean isDone;
 
     Task(String name, boolean isDone) {
         this.name = name;
         this.isDone = isDone;
-    }
-
-    public static Task createTask(String name, boolean isDone) {
-        return new Task(name, isDone);
     }
 
     public String getName() {
@@ -19,9 +15,11 @@ public class Task {
         return isDone;
     }
 
-    public Task complete() {
-        return createTask(this.getName(), true);
-    }
+    public abstract Task complete();
+
+    public abstract String encodeTask();
+
+    public abstract Task setName(String newName);
 
     @Override
     public String toString() {

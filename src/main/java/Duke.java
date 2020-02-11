@@ -4,14 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Duke {
-    // Storage storage;
+    Storage storage;
     Ui ui;
     TaskList taskList;
 
     public Duke() {
-        // this.storage = new Storage();
+        this.storage = new Storage();
         this.ui = new Ui();
-        this.taskList = new TaskList();
+        this.taskList = storage.load();
     }
 
     public static void main(String[] args) {
@@ -43,6 +43,7 @@ public class Duke {
 
     public CommandResult executeCommand(Command command) {
         command.setData(taskList);
+        storage.save(taskList);
         return command.execute();
     }
 

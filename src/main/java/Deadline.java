@@ -1,3 +1,7 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Deadline extends Task {
     String date;
 
@@ -10,8 +14,16 @@ public class Deadline extends Task {
         return new Deadline(name, isDone, date);
     }
 
-    public String getDate() {
-        return this.date;
+    public static Deadline decode(String text) {
+        String[] parts = text.split(",");
+        boolean decodedIsDone = parts[1].equals("1");
+        return createDeadline(parts[2], decodedIsDone, parts[3]);
+    }
+
+    @Override
+    public String encodeTask() {
+        int encodedIsDone = this.getIsDone() ? 1 : 0;
+        return "D," + encodedIsDone + "," + name + "," + date;
     }
 
     @Override
@@ -20,9 +32,18 @@ public class Deadline extends Task {
     }
 
     @Override
+    public Task setName(String newName) {
+        return createDeadline(newName, isDone, date);
+    }
+
+    @Override
     public String toString() {
         String taskString = super.toString();
         String result = "[D]" + taskString + " (by: " + date + ")";
         return result;
+    }
+
+    public String getDate() {
+        return this.date;
     }
 }

@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
     int taskNumber;
@@ -10,8 +8,7 @@ public class DeleteCommand extends Command {
 
     @Override
     public CommandResult execute() {
-        int index = taskNumber - 1;
-        Task removedTask = taskList.delete(index);
+        Task removedTask = taskList.delete(taskNumber);
         return new CommandResult(getDeleteSuccessMessage(removedTask));
     }
 
