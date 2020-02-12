@@ -1,8 +1,6 @@
-import java.util.Collection;
-import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
-
+/**
+ * Driver class of Duke
+ */
 public class Duke {
     Storage storage;
     Ui ui;
@@ -20,7 +18,7 @@ public class Duke {
     }
 
     /**
-     * Runs the program until execution
+     * Runs the program until termination
      */
     public void run() {
         this.start();

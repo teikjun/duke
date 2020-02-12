@@ -42,9 +42,9 @@ public class Parser {
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
             case EditCommand.COMMAND_WORD:
-                String[] editParts = argumentText.split("");
-                int TaskNumberToEdit = Integer.parseInt(editParts[0]);
-                String newName = editParts[1];
+                String[] editParts = argumentText.split("/to");
+                int TaskNumberToEdit = Integer.parseInt(editParts[0].trim());
+                String newName = editParts[1].trim();
                 return new EditCommand(TaskNumberToEdit, newName);
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
