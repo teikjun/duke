@@ -3,6 +3,8 @@ public class Todo extends Task {
         super(name, isDone);
     }
 
+    //TODO: move Parser's check for invalid object into createTodo
+    
     public static Todo createTodo(String name, boolean isDone) {
         return new Todo(name, isDone);
     }

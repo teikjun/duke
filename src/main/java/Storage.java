@@ -11,11 +11,12 @@ import java.util.List;
  */
 public class Storage {
 
-    Path path;
-
+    Path filePath;
+    Path folderPath;
     Storage() {
         String userHome = System.getProperty("user.home");
-        path = Paths.get(userHome, "duke", "data", "duke.txt");
+        filePath = Paths.get(userHome, "DukeData", "duke.txt");
+        folderPath = Paths.get(userHome, "DukeData");
     }
 
     /**
@@ -25,7 +26,8 @@ public class Storage {
     public TaskList load() {
         TaskList taskList = null;
         try {
-            List<String> encodedTasks = Files.readAllLines(path, Charset.defaultCharset());
+            createFileLocation();
+            List<String> encodedTasks = Files.readAllLines(filePath, Charset.defaultCharset());
             taskList = this.decodeTaskList(encodedTasks);
         } catch (IOException e) {
             e.printStackTrace();
@@ -34,13 +36,26 @@ public class Storage {
     }
 
     /**
+     * Creates the directory and/or file if they have not been created yet
+     * @throws IOException
+     */
+    public void createFileLocation() throws IOException {
+        if (Files.notExists(folderPath)) {
+            Files.createDirectory(folderPath);
+        }
+        if (Files.notExists(filePath)) {
+            Files.createFile(filePath);
+        }
+    }
+
+    /**
      * Stores a Task List in a predetermined filePath
-     * @param taskList
+     * @param taskList the taskList object to be saved
      */
     public void save(TaskList taskList) {
         try {
             List<String> encodedTasks = this.encodeTaskList(taskList);
-            Files.write(path, encodedTasks);
+            Files.write(filePath, encodedTasks);
         } catch (IOException e) {
             e.printStackTrace();
         }
