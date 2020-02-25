@@ -15,7 +15,8 @@ public class Event extends Task {
     public static Event decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return new Event(parts[2], decodedIsDone, LocalDate.parse(parts[3]));
+        LocalDate decodedDate = LocalDate.parse(parts[3], DateTimeFormatter.ofPattern("MMM d yyyy"));
+        return new Event(parts[2], decodedIsDone, decodedDate);
     }
 
     @Override

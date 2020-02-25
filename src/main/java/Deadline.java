@@ -15,7 +15,8 @@ public class Deadline extends Task {
     public static Deadline decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return new Deadline(parts[2], decodedIsDone, LocalDate.parse(parts[3]));
+        LocalDate decodedDate = LocalDate.parse(parts[3], DateTimeFormatter.ofPattern("MMM d yyyy"));
+        return new Deadline(parts[2], decodedIsDone, decodedDate);
     }
 
     @Override

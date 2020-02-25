@@ -28,6 +28,8 @@ public class Parser {
                 return new ExitCommand();
             case EditCommand.COMMAND_WORD:
                 return new EditCommand(argumentText);
+            case FindCommand.COMMAND_WORD:
+                return new FindCommand(argumentText);
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
             }

@@ -31,10 +31,11 @@ public class TaskList {
         tasks.add(newTask);
     }
 
+
     /**
      * Deletes a task
      * @param taskNumber the target task number to delete
-     * @return the task that is deleted
+     * @return the task that has been deleted from the list
      */
     public Task delete(int taskNumber) {
         int index = taskNumber - 1;
@@ -42,6 +43,12 @@ public class TaskList {
         return removedTask;
     }
 
+    /**
+     * Edits a task
+     * @param taskNumber to be edited from the list
+     * @param newName the new name of the task
+     * @return the edited task
+     */
     public Task edit(int taskNumber, String newName) {
         int index = taskNumber - 1;
         Task targetTask = tasks.get(index);
@@ -75,6 +82,19 @@ public class TaskList {
             Task currentTask = tasks.get(i);
             int taskNumber = i + 1;
             result += taskNumber + ". " + currentTask;
+        }
+        return result;
+    }
+
+    public String findTasks(String keyword) {
+        String result = "Here are the matching tasks in your list:";
+        for (int i = 0; i < tasks.size(); i++) {
+            Task currentTask = tasks.get(i);
+            if (currentTask.toString().contains(keyword)) {
+                result += "\n";
+                int taskNumber = i + 1;
+                result += taskNumber + ". " + currentTask;
+            }
         }
         return result;
     }
