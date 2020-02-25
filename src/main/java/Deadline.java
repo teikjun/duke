@@ -1,7 +1,13 @@
-public class Deadline extends Task {
-    String date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-    Deadline(String name, boolean isDone, String date) {
+/**
+ * Represents a deadline task
+ */
+public class Deadline extends Task {
+    LocalDate date;
+
+    Deadline(String name, boolean isDone, LocalDate date) {
         super(name, isDone);
         this.date = date;
     }
@@ -9,33 +15,33 @@ public class Deadline extends Task {
     public static Deadline decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return new Deadline(parts[2], decodedIsDone, parts[3]);
+        return new Deadline(parts[2], decodedIsDone, LocalDate.parse(parts[3]));
     }
 
     @Override
     public String encodeTask() {
         int encodedIsDone = this.getIsDone() ? 1 : 0;
-        return "D," + encodedIsDone + "," + name + "," + date;
+        return "D," + encodedIsDone + "," + name + "," + this.getDateString();
     }
 
     @Override
     public Deadline complete() {
-        return new Deadline(this.getName(), true, this.getDate());
+        return new Deadline(this.getName(), true, this.date);
     }
 
     @Override
     public Task setName(String newName) {
-        return new Deadline(newName, isDone, date);
+        return new Deadline(newName, isDone, this.date);
     }
 
     @Override
     public String toString() {
         String taskString = super.toString();
-        String result = "[D]" + taskString + " (by: " + date + ")";
+        String result = "[D]" + taskString + " (by: " + this.getDateString() + ")";
         return result;
     }
 
-    public String getDate() {
-        return this.date;
+    public String getDateString() {
+        return this.date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
 }

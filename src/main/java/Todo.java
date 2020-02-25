@@ -1,3 +1,6 @@
+/**
+ * Represents a to-do task
+ */
 public class Todo extends Task {
     Todo(String name, boolean isDone) {
         super(name, isDone);

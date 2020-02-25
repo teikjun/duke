@@ -1,3 +1,5 @@
+import java.time.format.DateTimeParseException;
+
 /**
  * Parses user input.
  */
@@ -29,7 +31,7 @@ public class Parser {
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
             }
-        } catch (DukeException e) {
+        } catch (DukeException | DateTimeParseException e) {
             return new IncorrectCommand(e.getMessage());
         }
     }

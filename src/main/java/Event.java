@@ -1,7 +1,13 @@
-public class Event extends Task {
-    String date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
-    Event(String name, boolean isDone, String date) {
+/**
+ * Represents an event task
+ */
+public class Event extends Task {
+    LocalDate date;
+
+    Event(String name, boolean isDone, LocalDate date) {
         super(name, isDone);
         this.date = date;
     }
@@ -9,33 +15,34 @@ public class Event extends Task {
     public static Event decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return new Event(parts[2], decodedIsDone, parts[3]);
+        return new Event(parts[2], decodedIsDone, LocalDate.parse(parts[3]));
     }
 
     @Override
     public String encodeTask() {
         int encodedIsDone = this.getIsDone() ? 1 : 0;
-        return "E," + encodedIsDone + "," + name + "," + date;
+        return "E," + encodedIsDone + "," + this.getName() + "," + this.getDateString();
     }
 
     @Override
     public Event complete() {
-        return new Event(this.getName(), true, this.getDate());
+        return new Event(this.getName(), true, this.date);
     }
 
     @Override
     public Task setName(String newName) {
-        return new Event(newName, isDone, date);
+        return new Event(newName, isDone, this.date);
     }
 
     @Override
     public String toString() {
         String taskString = super.toString();
-        String result = "[E]" + taskString + " (at: " + date + ")";
+        String result = "[E]" + taskString + " (at: " + this.getDateString() + ")";
         return result;
     }
 
-    public String getDate() {
-        return this.date;
+    public String getDateString() {
+        return this.date.format(DateTimeFormatter.ofPattern("MMM d yyyy"));
     }
+
 }

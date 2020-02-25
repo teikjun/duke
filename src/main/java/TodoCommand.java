@@ -3,7 +3,7 @@
  */
 public class TodoCommand extends Command {
     public static final String COMMAND_WORD = "todo";
-    String argumentText;
+    String taskName;
 
     /**
      * Creates a TodoCommand
@@ -14,7 +14,7 @@ public class TodoCommand extends Command {
         if (argumentText.equals("")) {
             throw new DukeException("The description of a todo cannot be empty.");
         } else {
-            this.argumentText = argumentText;
+            this.taskName = argumentText;
         }
     }
 
@@ -24,7 +24,7 @@ public class TodoCommand extends Command {
      */
     @Override
     public CommandResult execute() {
-        Task newTodo = new Todo(argumentText, false);
+        Task newTodo = new Todo(taskName, false);
         taskList.addToList(newTodo);
         return new CommandResult(getAddSuccessMessage(newTodo));
     }
