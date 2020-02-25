@@ -13,39 +13,19 @@ public class Parser {
             case ListCommand.COMMAND_WORD:
                 return new ListCommand();
             case DoneCommand.COMMAND_WORD:
-                // complete the task at number given by user
-                int taskNumberToComplete = Integer.parseInt(words[1]);
-                return new DoneCommand(taskNumberToComplete);
+                return new DoneCommand(words);
             case DeleteCommand.COMMAND_WORD:
-                int taskNumberToDelete = Integer.parseInt(words[1]);
-                return new DeleteCommand(taskNumberToDelete);
+                return new DeleteCommand(words);
             case TodoCommand.COMMAND_WORD:
-                if (argumentText.equals("")) {
-                    throw new DukeException("The description of a todo cannot be empty.");
-                } else {
-                    return new TodoCommand(argumentText);
-                }
+                return new TodoCommand(argumentText);
             case DeadlineCommand.COMMAND_WORD:
-                String[] deadlineParts = argumentText.split(" /by ");
-                if (deadlineParts[0].equals("") || deadlineParts[1].equals("")) {
-                    throw new DukeException("The description of a deadline cannot be empty");
-                } else {
-                    return new DeadlineCommand(deadlineParts[0], deadlineParts[1]);
-                }
+                return new DeadlineCommand(argumentText);
             case EventCommand.COMMAND_WORD:
-                String[] eventParts = argumentText.split(" /at ");
-                if (eventParts[0].equals("") || eventParts[1].equals("")) {
-                    throw new DukeException("The description of an event cannot be empty");
-                } else {
-                    return new EventCommand(eventParts[0], eventParts[1]);
-                }
+                return new EventCommand(argumentText);
             case ExitCommand.COMMAND_WORD:
                 return new ExitCommand();
             case EditCommand.COMMAND_WORD:
-                String[] editParts = argumentText.split("/to");
-                int TaskNumberToEdit = Integer.parseInt(editParts[0].trim());
-                String newName = editParts[1].trim();
-                return new EditCommand(TaskNumberToEdit, newName);
+                return new EditCommand(argumentText);
             default:
                 throw new DukeException("I'm sorry, but I don't know what that means :-(");
             }

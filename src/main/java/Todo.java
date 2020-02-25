@@ -3,16 +3,10 @@ public class Todo extends Task {
         super(name, isDone);
     }
 
-    //TODO: move Parser's check for invalid object into createTodo
-    
-    public static Todo createTodo(String name, boolean isDone) {
-        return new Todo(name, isDone);
-    }
-
     public static Todo decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return createTodo(parts[2], decodedIsDone);
+        return new Todo(parts[2], decodedIsDone);
     }
 
     @Override
@@ -23,12 +17,12 @@ public class Todo extends Task {
 
     @Override
     public Todo complete() {
-        return createTodo(this.getName(), true);
+        return new Todo(this.getName(), true);
     }
 
     @Override
     public Task setName(String newName) {
-        return createTodo(newName, isDone);
+        return new Todo(newName, isDone);
     }
 
     @Override

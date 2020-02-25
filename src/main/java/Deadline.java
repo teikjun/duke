@@ -6,14 +6,10 @@ public class Deadline extends Task {
         this.date = date;
     }
 
-    public static Deadline createDeadline(String name, boolean isDone, String date) {
-        return new Deadline(name, isDone, date);
-    }
-
     public static Deadline decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return createDeadline(parts[2], decodedIsDone, parts[3]);
+        return new Deadline(parts[2], decodedIsDone, parts[3]);
     }
 
     @Override
@@ -24,12 +20,12 @@ public class Deadline extends Task {
 
     @Override
     public Deadline complete() {
-        return createDeadline(this.getName(), true, this.getDate());
+        return new Deadline(this.getName(), true, this.getDate());
     }
 
     @Override
     public Task setName(String newName) {
-        return createDeadline(newName, isDone, date);
+        return new Deadline(newName, isDone, date);
     }
 
     @Override

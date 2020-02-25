@@ -1,14 +1,18 @@
 public class DoneCommand extends Command {
     public static final String COMMAND_WORD = "done";
-    int taskNumber;
+    int taskNumberToComplete;
 
-    DoneCommand(int taskNumber) {
-        this.taskNumber = taskNumber;
+    DoneCommand(String[] words) {
+        this.taskNumberToComplete = Integer.parseInt(words[1]);
     }
 
+    /**
+     * complete the task at taskNumberToComplete
+     * @return CommandResult with success message
+     */
     @Override
     public CommandResult execute() {
-        Task completedTask = taskList.markAsDone(taskNumber);
+        Task completedTask = taskList.markAsDone(taskNumberToComplete);
         return new CommandResult(getDoneSuccessMessage(completedTask));
     }
 

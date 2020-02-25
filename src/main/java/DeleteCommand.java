@@ -1,14 +1,14 @@
 public class DeleteCommand extends Command {
     public static final String COMMAND_WORD = "delete";
-    int taskNumber;
+    int taskNumberToDelete;
 
-    DeleteCommand(int taskNumber) {
-        this.taskNumber = taskNumber;
+    DeleteCommand(String[] words) {
+        this.taskNumberToDelete = Integer.parseInt(words[1]);
     }
 
     @Override
     public CommandResult execute() {
-        Task removedTask = taskList.delete(taskNumber);
+        Task removedTask = taskList.delete(taskNumberToDelete);
         return new CommandResult(getDeleteSuccessMessage(removedTask));
     }
 

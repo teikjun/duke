@@ -6,14 +6,10 @@ public class Event extends Task {
         this.date = date;
     }
 
-    public static Event createEvent(String name, boolean isDone, String date) {
-        return new Event(name, isDone, date);
-    }
-
     public static Event decode(String text) {
         String[] parts = text.split(",");
         boolean decodedIsDone = parts[1].equals("1");
-        return createEvent(parts[2], decodedIsDone, parts[3]);
+        return new Event(parts[2], decodedIsDone, parts[3]);
     }
 
     @Override
@@ -24,12 +20,12 @@ public class Event extends Task {
 
     @Override
     public Event complete() {
-        return createEvent(this.getName(), true, this.getDate());
+        return new Event(this.getName(), true, this.getDate());
     }
 
     @Override
     public Task setName(String newName) {
-        return createEvent(newName, isDone, date);
+        return new Event(newName, isDone, date);
     }
 
     @Override
