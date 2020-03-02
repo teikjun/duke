@@ -35,6 +35,7 @@ Marks a task as done.
 
     done <task number>
     done 4
+    
 ### 5.  `edit`
 Edit the description of a task (todo, deadline, or event)
 
