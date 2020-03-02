@@ -54,11 +54,5 @@ public class MainWindow extends AnchorPane {
     public static String greeting() {
         return "Greetings, my friend! My name is Ducat.\n" + "What can I do for you?";
     }
-    public static String getLogo() {
-        return " ____        _        \n"
-                + "|  _ \\ _   _| | _____ \n"
-                + "| | | | | | | |/ / _ \\\n"
-                + "| |_| | |_| |   <  __/\n"
-                + "|____/ \\__,_|_|\\_\\___|\n";
-    }
+
 }

@@ -1,20 +1,64 @@
 # User Guide
 
-## Features 
+## Interface
+<img src="./Ui.png" width="400">
 
-### Feature 1 
-Description of feature.
+## Overview
+Ducat is an task management chatbot (AKA catbot) that allows you to note down your tasks and manage them accordingly.
+You can ask Ducat to create new tasks and tick them off when completed. 
+You can edit, delete, and search through your tasks as you wish.
 
-## Usage
+## Features and Usage
 
-### `Keyword` - Describe action
+###1.  `todo` 
+Add a todo to your tasks list.
+    
+    todo <description> 
+    todo Read book
 
-Describe action and its outcome.
+###2.  `deadline` 
+Add a deadline to your tasks list.
+You can specify dates for deadlines.
 
-Example of usage: 
+    deadline <description> /by <yyyy-mm-dd>
+    deadline Assignment /by 2020-03-12
+    
+###3. `event`
+Add an event to your tasks list.
+You can specify dates for events.
 
-`keyword (optional arguments)`
+    event <description> /by <yyyy-mm-dd>
+    event Meeting /by 2020-04-12
 
-Expected outcome:
+###4. `done`
+Marks a task as done.
 
-`outcome`
+    done <task number>
+    done 4
+###4.  `edit`
+Edit the description of a task (todo, deadline, or event)
+
+    edit <task number> /to <new description>
+    edit 1 /to Read textbook
+
+###5. `delete` 
+Removes a task from the list.
+
+    delete <task number>
+    delete 2
+    
+###6. `find` 
+Search the list for tasks containing a keyword.
+
+    find <keyword>
+    find book
+    
+###7. `list` 
+List all of your tasks.
+
+    list
+
+###8. `bye`
+Says goodbye.
+
+    bye
