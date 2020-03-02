@@ -53,4 +53,17 @@ public class Duke {
         ui.showGoodbyeMessage();
         System.exit(0);
     }
+
+
+    /**
+     * Returns a String used for output on GUI
+     * @param userCommandText input text from user
+     * @return a String as response to the user
+     */
+    public String getResponse(String userCommandText) {
+        Command command = (new Parser()).parseCommand(userCommandText);
+        CommandResult result = executeCommand(command);
+        return ui.getResponse(result);
+    }
+
 }

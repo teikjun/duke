@@ -13,7 +13,7 @@ public class DeleteCommand extends Command {
     }
 
     public String getDeleteSuccessMessage(Task removedTask) {
-        return "Noted. I've removed this task:\n"
+        return "Noted! I've removed this task:\n"
                 + removedTask + "\n"
                 + "Now you have " + taskList.getSize() + " tasks in the list.";
     }

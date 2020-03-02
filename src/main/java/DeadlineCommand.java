@@ -17,7 +17,7 @@ public class DeadlineCommand extends Command {
     DeadlineCommand(String argumentText) throws DukeException, DateTimeParseException {
         String[] deadlineParts = argumentText.split(" /by ");
         if (deadlineParts[0].equals("") || deadlineParts[1].equals("")) {
-            throw new DukeException("The description of a deadline cannot be empty");
+            throw new DukeException("The description of a deadline must not be empty");
         } else {
             this.taskName = deadlineParts[0];
             this.date = LocalDate.parse(deadlineParts[1]);

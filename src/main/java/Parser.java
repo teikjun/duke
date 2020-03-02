@@ -31,7 +31,7 @@ public class Parser {
             case FindCommand.COMMAND_WORD:
                 return new FindCommand(argumentText);
             default:
-                throw new DukeException("I'm sorry, but I don't know what that means :-(");
+                throw new DukeException("I beg your pardon, I do not know what that means.");
             }
         } catch (DukeException | DateTimeParseException e) {
             return new IncorrectCommand(e.getMessage());

@@ -23,7 +23,7 @@ public class EditCommand extends Command {
     }
 
     public String getEditSuccessMessage(Task editedTask) {
-        return "Got it. The task has been successfully updated to:\n"
+        return "As it should be! The task has been successfully updated to:\n"
                 + editedTask;
     }
 }

@@ -9,6 +9,15 @@ public class Ui {
         this.sc = new Scanner(System.in);
     }
 
+    /**
+     * Returns a String used for output on GUI
+     * @param result The CommandResult representing the result of the command execution
+     * @return a String representing the response for the user
+     */
+    public String getResponse(CommandResult result) {
+        return result.getFeedbackToUser();
+    }
+
     public String getUserCommand() {
         return sc.nextLine();
     }
@@ -21,6 +30,8 @@ public class Ui {
         System.out.println("Hello! I'm Duke\n"
                 + "What can I do for you?");
     }
+
+
 
     public void showGoodbyeMessage() {
         System.out.println(":D");

@@ -17,7 +17,7 @@ public class DoneCommand extends Command {
     }
 
     public String getDoneSuccessMessage(Task completedTask) {
-        return "Nice! I've marked this task as done:\n"
+        return "Marvelous! I've marked this task as done:\n"
                 + completedTask + "\n"
                 + "Now you have " + taskList.getSize() + " tasks in the list.";
     }

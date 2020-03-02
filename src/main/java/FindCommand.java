@@ -12,7 +12,7 @@ public class FindCommand extends Command {
      */
     FindCommand(String argumentText) throws DukeException {
         if (argumentText.equals("")) {
-            throw new DukeException("The find command must be followed by a keyword to search");
+            throw new DukeException("The find command must be followed by a keyword to search.");
         } else {
             this.keyword = argumentText;
         }

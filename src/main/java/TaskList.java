@@ -76,7 +76,7 @@ public class TaskList {
      * @return a String representing all tasks in the list
      */
     public String getAllTasks() {
-        String result = "Here are the tasks in your list:";
+        String result = "As you wish! Here are the tasks in your list:";
         for (int i = 0; i < tasks.size(); i++) {
             result += "\n";
             Task currentTask = tasks.get(i);
@@ -87,7 +87,7 @@ public class TaskList {
     }
 
     public String findTasks(String keyword) {
-        String result = "Here are the matching tasks in your list:";
+        String result = "Certainly! Here are the matching tasks in your list:";
         for (int i = 0; i < tasks.size(); i++) {
             Task currentTask = tasks.get(i);
             if (currentTask.toString().contains(keyword)) {

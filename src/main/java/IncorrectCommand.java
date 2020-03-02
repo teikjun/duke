@@ -7,6 +7,6 @@ public class IncorrectCommand extends Command{
 
     @Override
     public CommandResult execute() {
-        return new CommandResult("OOPS!!! " + errorMessage);
+        return new CommandResult(errorMessage);
     }
 }
